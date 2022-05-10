@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct CostEstimationView: View {
     var body: some View {
         
         HStack{
@@ -41,10 +41,10 @@ struct ContentView: View {
     
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct CostEstimationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            ContentView()
+            CostEstimationView()
         }
     }
 }
