@@ -12,7 +12,7 @@ struct SplitBillView: View {
     //MARK: STORED PROPERTIES
     
     //Types of input that the user is going to enter
-    @State var dateInput = ""
+    @State var dateInput = Date()
     
     @State var totalInput = ""
     
@@ -38,7 +38,7 @@ struct SplitBillView: View {
                 VStack(alignment: .leading){
                     
                     DatePicker("Date:",
-                               selection: .constant(Date()),
+                               selection: $dateInput,
                                displayedComponents: .date)
                         .font(.title)
                         .padding()
@@ -106,13 +106,13 @@ struct SplitBillView: View {
             }
             
             Button(action: {
-                // NOTE: Output will not be shown unless this app is run in the "full" simulator
                 print("Button was pressed")
             }, label: {
                 Text("Calculate Total")
                     .font(.title)
             })
             .buttonStyle(.bordered)
+            
             Text("Your total is:")
                 .font(.title)
                 .bold()
