@@ -8,6 +8,28 @@
 import SwiftUI
 
 struct SplitBillView: View {
+    
+    //MARK: STORED PROPERTIES
+    
+    //Types of input that the user is going to enter
+    @State var dateInput = ""
+    
+    @State var totalInput = ""
+    
+    @State var numberOFPeople = ""
+    
+    @State var tipInput = ""
+    
+    @State var taxInput = ""
+    
+    //MARK: COMPUTED PROPERTIES
+    
+    //Calculation
+    //var calculation: Int{
+    //    return tipInput/100
+   // }
+    
+    
     var body: some View {
         
         VStack{
@@ -26,8 +48,8 @@ struct SplitBillView: View {
                             .font(.title)
                             .padding()
                         TextField("",
-                                  text: .constant(""),
-                                  prompt: Text("Input total..."))
+                                  text: $totalInput,
+                                  prompt: Text("..."))
                             .font(.title)
                           
                     }
@@ -38,8 +60,8 @@ struct SplitBillView: View {
                             .padding()
                         
                         TextField("",
-                                  text: .constant(""),
-                                  prompt: Text("Input total..."))
+                                  text: $numberOFPeople,
+                                  prompt: Text("..."))
                             .font(.title)
                           
                     }
@@ -50,8 +72,8 @@ struct SplitBillView: View {
                             .padding()
                         
                         TextField("",
-                                  text: .constant(""),
-                                  prompt: Text("Input total..."))
+                                  text: $tipInput,
+                                  prompt: Text("..."))
                             .font(.title)
                             
                     }
@@ -62,7 +84,7 @@ struct SplitBillView: View {
                             .font(.title)
                             .padding()
                         
-                        Picker(selection: .constant(""),
+                        Picker(selection: $taxInput,
                                label: Text("Picker Name"),
                                content: {
                             
