@@ -16,26 +16,33 @@ struct SplitBillView: View {
     
     @State var totalInput = ""
     
-    @State var numberOFPeople = ""
+    @State var numberOfPeople = ""
     
     @State var tipInput = ""
     
     @State var taxInput = ""
     
+    @State var totalCorrect = false
+    
+    @State var peopleCorrect = false
+    
+    let HST = 0.13
+    
+    let PST = 0.07
+    
+    let GST = 0.05
+    
+    @State var subTotal = 0.0
+    
     //MARK: COMPUTED PROPERTIES
-    
-    //Calculation
-    //var calculation: Int{
-    //    return tipInput/100
-   // }
-    
-    
+    //using stored properties to calculate something
+   
     var body: some View {
         
         VStack{
             HStack{
                 
-                VStack(alignment: .leading){
+                VStack{
                     
                     DatePicker("Date:",
                                selection: $dateInput,
@@ -51,7 +58,7 @@ struct SplitBillView: View {
                                   text: $totalInput,
                                   prompt: Text("..."))
                             .font(.title)
-                          
+                        
                     }
                     
                     HStack{
@@ -60,11 +67,40 @@ struct SplitBillView: View {
                             .padding()
                         
                         TextField("",
-                                  text: $numberOFPeople,
+                                  text: $numberOfPeople,
                                   prompt: Text("..."))
                             .font(.title)
-                          
+                        
                     }
+                    
+                    Button(action: {
+                        //guard statement to convert the string to integer
+                        //remember, prices have decimalas, therefore it's a Double
+                        guard let totalGiven = Double(totalInput) else {
+                            // not a number
+                            totalCorrect = false
+                            return
+                        }
+                        
+                        guard let peopleGiven = Double(numberOfPeople) else {
+                            // not a number
+                            peopleCorrect = false
+                            return
+                        }
+                        
+                        subTotal = totalGiven / peopleGiven
+                        
+                        
+                    }, label: {
+                        Text("Calculate Subtotal")
+                            .font(.title2)
+                    })
+                        .buttonStyle(.bordered)
+                        .padding()
+                    
+                    Text("Your subtotal is: $\(subTotal)")
+                    
+                    Divider()
                     
                     HStack{
                         Text("Tip:")
@@ -72,10 +108,11 @@ struct SplitBillView: View {
                             .padding()
                         
                         TextField("",
-                                  text: $tipInput,
+                                  text: $tipInput ,
                                   prompt: Text("..."))
                             .font(.title)
-                            
+                        Text("%")
+                            .font(.title)
                     }
                     
                     HStack{
@@ -91,12 +128,12 @@ struct SplitBillView: View {
                             Text("HST").tag(0)
                             Text("PST").tag(1)
                             Text("GST").tag(2)
-   
-                        })
-                        .pickerStyle(MenuPickerStyle())
-                        //How to make the values bigger
-                        .font(.title)
                             
+                        })
+                            .pickerStyle(MenuPickerStyle())
+                        //How to make the values bigger?
+                            .font(.title)
+                        Spacer()
                     }
                     
                     Spacer()
@@ -111,7 +148,7 @@ struct SplitBillView: View {
                 Text("Calculate Total")
                     .font(.title)
             })
-            .buttonStyle(.bordered)
+                .buttonStyle(.bordered)
             
             Text("Your total is:")
                 .font(.title)
@@ -122,7 +159,7 @@ struct SplitBillView: View {
         }
         .navigationTitle("Split the Bill!")
     }
-        
+    
 }
 
 struct SplitBillView_Previews: PreviewProvider {
