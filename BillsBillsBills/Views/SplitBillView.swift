@@ -52,41 +52,11 @@ struct SplitBillView: View {
                                 .font(.title)
                                 .padding()
                             
-                            HStack{
-                                Text("Total: $")
-                                    .font(.title)
-                                    .padding()
-                                TextField("",
-                                          text: $totalInput,
-                                          prompt: Text("..."))
-                                    .font(.title)
-                                
-                            }
+                            TotalInputView(totalInput: $totalInput)
                             
-                            HStack{
-                                Text("# of people:")
-                                    .font(.title)
-                                    .padding()
-                                
-                                TextField("",
-                                          text: $numberOfPeople,
-                                          prompt: Text("..."))
-                                    .font(.title)
-                                
-                            }
+                            NumberOfPeopleView(numberOfPeople: $numberOfPeople)
                             
-                            HStack{
-                                Text("Tip:")
-                                    .font(.title)
-                                    .padding()
-                                
-                                TextField("",
-                                          text: $tipInput ,
-                                          prompt: Text("..."))
-                                    .font(.title)
-                                Text("%")
-                                    .font(.title)
-                            }
+                            TipInputView(tipInput: $tipInput)
                             
                             HStack{
                                 
