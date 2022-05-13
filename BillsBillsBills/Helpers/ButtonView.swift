@@ -52,11 +52,11 @@ struct ButtonView: View {
                 
                 return
             }
-            print("total given is: \(totalGiven)")
-            print("people given is: \(peopleGiven)")
-            print("tax input is: \(taxInput)")
-            print("tipGiven is: \(tipGiven)")
-            print("grandTotal is: \(grandTotal)")
+//            print("total given is: \(totalGiven)")
+//            print("people given is: \(peopleGiven)")
+//            print("tax input is: \(taxInput)")
+//            print("tipGiven is: \(tipGiven)")
+//            print("grandTotal is: \(grandTotal)")
             
             grandTotal = ((totalGiven * taxInput)/2) + (totalGiven/peopleGiven) + ((totalGiven/peopleGiven)*(tipGiven/100))
             
@@ -90,6 +90,6 @@ struct ButtonView: View {
 
 struct ButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonView(totalCorrect: .constant(false), peopleCorrect: .constant(false), tipCorrect: .constant(false), taxCorrect: .constant(false), totalInput: "100", numberOfPeople: "2", tipInput: "100", grandTotal: .constant(100.0), taxInput: .constant(0.0), history: .constant([]))
+        ButtonView(totalCorrect: .constant(false), peopleCorrect: .constant(false), tipCorrect: .constant(false), taxCorrect: .constant(false), totalInput: "100", numberOfPeople: "2", tipInput: "100", grandTotal: .constant(100.0), taxInput: .constant(0.05), history: .constant([]))
     }
 }

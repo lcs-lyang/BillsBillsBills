@@ -14,9 +14,9 @@ struct HistoryView: View {
     var body: some View {
         ScrollView{
             VStack{
-                Text("Your total is: \(history.totalInput)")
+                Text("Your total is: $\(history.totalInput)")
                 Text("The bill was split between \(history.numberOfPeople)")
-                Text("The tip was \(history.tipInput) and the tax was \(history.taxInput)")
+                Text("The total per person is: $\(String(format: "%.2f", history.grandTotal))")
             }
         }
     }

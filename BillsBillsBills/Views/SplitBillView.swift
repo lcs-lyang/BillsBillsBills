@@ -40,76 +40,58 @@ struct SplitBillView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView{
-                VStack{
-                    HStack{
-                        
-                        VStack{
-                            
-                            DatePicker("Date:",
-                                       selection: $dateInput,
-                                       displayedComponents: .date)
-                                .font(.title)
-                                .padding()
-                            
-                            TotalInputView(totalInput: $totalInput)
-                            
-                            NumberOfPeopleView(numberOfPeople: $numberOfPeople)
-                            
-                            TipInputView(tipInput: $tipInput)
-                            
-                            HStack{
-                                
-                                Text("Tax:")
-                                    .font(.title)
-                                    .padding()
-                                
-                                Picker(selection: $taxInput,
-                                       label: Text("Picker Name"),
-                                       content: {
-                                    
-                                    //tag = is what the value is actually going to be inputed
-                                    Text("HST").tag(0.13)
-                                    Text("PST").tag(0.07)
-                                    Text("GST").tag(0.05)
-                                    
-                                })
-                                    .pickerStyle(MenuPickerStyle())
-                                //How to make the values bigger?
-                                    .font(.title)
-                                Spacer()
-                            }
-                            
-                            Spacer()
-                        }
-                        
-                        
-                        Spacer()
-                    }
+            
+            VStack{
+                
+                HStack{
                     
-                    //Button 1
-                    ButtonView(totalCorrect: $totalCorrect, peopleCorrect: $peopleCorrect, tipCorrect: $tipCorrect, taxCorrect: $taxCorrect, totalInput: totalInput, numberOfPeople: numberOfPeople, tipInput: tipInput, grandTotal: $grandTotal, taxInput: $taxInput, history: $history)
-                    
-                    Text("Your grand total is: $\(String(format: "%.2f", grandTotal))")
-                        .bold()
-                        .opacity(peopleCorrect && totalCorrect == false ? 0.0 : 1.0)
-                    
-                    // Show results of prior questions attempted
-                    List(history) { currentGrandTotal in
-                        // Use a helper view to display each prior result
-                        HistoryView(history: currentGrandTotal)
+                    VStack{
                         
-                        Spacer()
+                        DatePicker("Date:",
+                                   selection: $dateInput,
+                                   displayedComponents: .date)
+                            .font(.title)
+                            .padding()
+                        
+                        TotalInputView(totalInput: $totalInput)
+                        
+                        NumberOfPeopleView(numberOfPeople: $numberOfPeople)
+                        
+                        TipInputView(tipInput: $tipInput)
+                        
+                        TaxInputView(taxInput: $taxInput)
                         
                     }
                     
+                    Spacer()
+                    
+                }
+                
+                //Button 1
+                ButtonView(totalCorrect: $totalCorrect, peopleCorrect: $peopleCorrect, tipCorrect: $tipCorrect, taxCorrect: $taxCorrect, totalInput: totalInput, numberOfPeople: numberOfPeople, tipInput: tipInput, grandTotal: $grandTotal, taxInput: $taxInput, history: $history)
+                
+                Text("Your grand total is: $\(String(format: "%.2f", grandTotal))")
+                    .bold()
+                    .opacity(peopleCorrect && totalCorrect == true ? 1.0 : 0.0)
+                
+                // Show results of prior questions attempted
+                List(history) { currentGrandTotal in
+                    // Use a helper view to display each prior result
+                    HistoryView(history: currentGrandTotal)
                     
                     
                 }
+                
             }
+            
             .navigationTitle("Split the Bill!")
+            
+            Spacer()
+            
         }
+        
     }
+    
 }
 
 struct SplitBillView_Previews: PreviewProvider {
