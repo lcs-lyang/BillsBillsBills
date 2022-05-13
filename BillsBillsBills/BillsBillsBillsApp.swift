@@ -12,8 +12,20 @@ struct BillsBillsBillsApp: App {
     var body: some Scene {
         WindowGroup {
             
-            SplitBillView()
+            TabView{
             
+            SplitBillView()
+                    .tabItem {
+                        Image(systemName: "square.fill.and.line.vertical.and.square.fill")
+                    }
+                
+            ListHistoryView()
+                    .tabItem {
+                        Image(systemName: "list.bullet.rectangle.portrait.fill")
+                    }
+                
+                
+            }
             
         }
         

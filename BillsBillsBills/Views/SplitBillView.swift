@@ -72,8 +72,13 @@ struct SplitBillView: View {
                 
                 Text("Your grand total is: $\(String(format: "%.2f", grandTotal))")
                     .bold()
-                    .opacity(peopleCorrect && totalCorrect == true ? 1.0 : 0.0)
+                    .opacity(peopleCorrect && totalCorrect && tipCorrect == true ? 0.0 : 1.0)
+                    .padding()
                 
+                
+                Text("History")
+                    .bold()
+                    
                 // Show results of prior questions attempted
                 List(history) { currentGrandTotal in
                     // Use a helper view to display each prior result

@@ -24,7 +24,7 @@ struct ButtonView: View {
         
         Button(action: {
             //guard statement to convert the string to integer
-            //remember, prices have decimalas, therefore it's a Double
+            //remember, prices have decimals, therefore it's a Double
             
             guard let totalGiven = Double(totalInput) else {
                 // not a number
