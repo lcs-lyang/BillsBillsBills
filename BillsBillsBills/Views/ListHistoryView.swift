@@ -33,6 +33,10 @@ struct ListHistoryView: View {
     
     @State var grandTotal = 0.0
     
+    @State var filterTotal = ""
+    
+    @State var grandTotalInput = false
+    
     @Binding var history: [GrandTotal]
     
     //MARK: COMPUTED PROPERTIES
@@ -43,14 +47,41 @@ struct ListHistoryView: View {
             
             VStack{
                
-               
-                Text("hello")
-//                    List(filtered(by: hue,
-//                                  from: savedPalettes,
-//                                  selectionActive: selectionMade)) { palette in
-//                        MonochromaticPaletteView(hue: palette.hue, showTitle: false)
-//
+                HStack{
+                    TextField("",
+                              text: $filterTotal,
+                              prompt: Text("..."))
+                        .font(.title)
                     
+                    Button(action: {
+                        filterTotal = ""
+                        grandTotalInput = false
+                        print("Resetting")
+                    }, label: {
+                        Text("Reset")
+                    })
+                    
+                }
+               
+                
+                
+                    List(filtered(by: grandTotal,
+                                  from: history,
+                                  input: grandTotalInput)) { totals in
+                        HistoryView(totalInput: "", numberOfPeople: "", grandTotal: totals.grandTotal)
+                        
+                    }
+                                  .padding()
+//                                  .onChange(of: filterTotal) { newValue in
+//
+//                                      //the user has selected a hue, so start filtering
+//                                      if newValue > 0 {
+//                                          grandTotalInput = true
+//                                      }
+//
+//                                      print("A selection has been made")
+//
+//                                  }
                     
                 }
             .navigationTitle("History")

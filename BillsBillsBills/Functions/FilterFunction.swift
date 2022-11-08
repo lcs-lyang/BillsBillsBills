@@ -7,35 +7,35 @@
 
 import Foundation
 
-//func filtered(by grandTotal: Double, from list: [GrandTotal], input: Bool) -> [GrandTotal] {
-//
-//
-//    //Not filtering when there is no input
-//    if input == false {
-//        return list
-//    } else {
-//
-//
-//        print("Grand Total is: \(granddTotal)")
-//        print(list)
-//
-//
-//
-//        var filteredTotals: [grandTotal] = []
-//
-//        for palette in list {
-//
-//            //Look for a palette in the desired range
-//            if hueRange.contains(palette.hue) {
-//                filteredResults.append(palette)
-//            }
-//
-//        }
-//
-//
-//        //Resturn the list of filtered results
-//        return filteredResults
-//    }
-//
-//
-//}
+func filtered(by grandTotal: Double, from list: [GrandTotal], input: Bool) -> [GrandTotal] {
+
+
+    //Not filtering when there is no input
+    if input == false {
+        return list
+    } else {
+
+
+        print("Grand Total is: \(grandTotal)")
+        print(list)
+
+        let totalRange = 0.0...10000000.0
+
+        var filteredTotals: [GrandTotal] = []
+
+        for totals in list {
+
+            //Look for a total in the desired range
+            if totalRange.contains(totals.grandTotal) {
+                filteredTotals.append(totals)
+            }
+
+        }
+
+
+        //Return the list of filtered totals
+        return filteredTotals
+    }
+
+
+}

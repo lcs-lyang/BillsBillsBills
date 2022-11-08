@@ -78,10 +78,7 @@ struct SplitBillView: View {
                 Spacer()
                 
                 
-//                // Show results of prior questions attempted
-//                List(history) { currentGrandTotal in
-//                    // Use a helper view to display each prior result
-//                    HistoryView(history: currentGrandTotal)
+
                 }
                 
             .navigationTitle("Split the Bill!")
