@@ -20,4 +20,11 @@ struct GrandTotal : Identifiable {
     let grandTotal: Double
 }
 
-let testGrandTotal = GrandTotal(totalInput: "10", numberOfPeople: "2", tipInput: "5", taxInput: 10.0, totalCorrect: false, peopleCorrect: false, tipCorrect: false, taxCorrect: false, grandTotal: 100.0)
+let testGrandTotal = [
+    GrandTotal(totalInput: "10", numberOfPeople: "2", tipInput: "5", taxInput: 10.0, totalCorrect: false, peopleCorrect: false, tipCorrect: false, taxCorrect: false, grandTotal: 100.0)
+    
+    ,
+    
+    
+    GrandTotal(totalInput: "11", numberOfPeople: "3", tipInput: "6", taxInput: 11.0, totalCorrect: false, peopleCorrect: false, tipCorrect: false, taxCorrect: false, grandTotal: 110.0)
+    ]

@@ -19,6 +19,7 @@ struct ButtonView: View {
     @Binding var grandTotal: Double
     @Binding var taxInput: Double
     @Binding var history: [GrandTotal]
+
     
     var body: some View {
         

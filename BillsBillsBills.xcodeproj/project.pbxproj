@@ -14,6 +14,7 @@
 		1903FB1F282DE8870012C45A /* NumberOfPeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1903FB1E282DE8870012C45A /* NumberOfPeopleView.swift */; };
 		1903FB21282DE9420012C45A /* TipInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1903FB20282DE9420012C45A /* TipInputView.swift */; };
 		1903FB25282DEBC70012C45A /* TaxInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1903FB24282DEBC70012C45A /* TaxInputView.swift */; };
+		19280F6629141F8600C53D6D /* FilterFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19280F6529141F8600C53D6D /* FilterFunction.swift */; };
 		1952994A282AA5C1003363D6 /* SplitBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19529949282AA5C1003363D6 /* SplitBillView.swift */; };
 		198949BE282DFDF30093DB3A /* ListHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198949BD282DFDF30093DB3A /* ListHistoryView.swift */; };
 		19F22D522825A9B500D4D1E7 /* BillsBillsBillsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F22D512825A9B500D4D1E7 /* BillsBillsBillsApp.swift */; };
@@ -29,6 +30,7 @@
 		1903FB1E282DE8870012C45A /* NumberOfPeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfPeopleView.swift; sourceTree = "<group>"; };
 		1903FB20282DE9420012C45A /* TipInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipInputView.swift; sourceTree = "<group>"; };
 		1903FB24282DEBC70012C45A /* TaxInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxInputView.swift; sourceTree = "<group>"; };
+		19280F6529141F8600C53D6D /* FilterFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterFunction.swift; sourceTree = "<group>"; };
 		19529949282AA5C1003363D6 /* SplitBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBillView.swift; sourceTree = "<group>"; };
 		198949BD282DFDF30093DB3A /* ListHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHistoryView.swift; sourceTree = "<group>"; };
 		19F22D4E2825A9B500D4D1E7 /* BillsBillsBills.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BillsBillsBills.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +61,14 @@
 				1903FB1A282DD23E0012C45A /* ButtonView.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		19280F6429141EAB00C53D6D /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				19280F6529141F8600C53D6D /* FilterFunction.swift */,
+			);
+			path = Functions;
 			sourceTree = "<group>";
 		};
 		19529947282AA442003363D6 /* Views */ = {
@@ -98,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				19F22D512825A9B500D4D1E7 /* BillsBillsBillsApp.swift */,
+				19280F6429141EAB00C53D6D /* Functions */,
 				1903FB13282D7B670012C45A /* Helpers */,
 				19529948282AA490003363D6 /* Model */,
 				19529947282AA442003363D6 /* Views */,
@@ -188,6 +199,7 @@
 				1903FB19282DD1B60012C45A /* GrandTotal.swift in Sources */,
 				1903FB17282DCF480012C45A /* HistoryView.swift in Sources */,
 				1952994A282AA5C1003363D6 /* SplitBillView.swift in Sources */,
+				19280F6629141F8600C53D6D /* FilterFunction.swift in Sources */,
 				19F22D522825A9B500D4D1E7 /* BillsBillsBillsApp.swift in Sources */,
 				1903FB1D282DE6910012C45A /* TotalInputView.swift in Sources */,
 				1903FB21282DE9420012C45A /* TipInputView.swift in Sources */,
@@ -325,7 +337,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BillsBillsBills/Preview Content\"";
-				DEVELOPMENT_TEAM = 3ZC8R8YM24;
+				DEVELOPMENT_TEAM = NJ39S8D68C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -354,7 +366,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BillsBillsBills/Preview Content\"";
-				DEVELOPMENT_TEAM = 3ZC8R8YM24;
+				DEVELOPMENT_TEAM = NJ39S8D68C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

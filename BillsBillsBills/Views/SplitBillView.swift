@@ -33,7 +33,7 @@ struct SplitBillView: View {
     
     @State var grandTotal = 0.0
     
-    @State var history: [GrandTotal] = []
+    @Binding var history: [GrandTotal]
     
     //MARK: COMPUTED PROPERTIES
     //using stored properties to calculate something
@@ -50,8 +50,8 @@ struct SplitBillView: View {
                         DatePicker("Date:",
                                    selection: $dateInput,
                                    displayedComponents: .date)
-                            .font(.title)
-                            .padding()
+                        .font(.title)
+                        .padding()
                         
                         TotalInputView(totalInput: $totalInput)
                         
@@ -75,34 +75,41 @@ struct SplitBillView: View {
                     .opacity(peopleCorrect && totalCorrect && tipCorrect == true ? 0.0 : 1.0)
                     .padding()
                 
+                Spacer()
                 
-                Text("History")
-                    .bold()
-                    
-                // Show results of prior questions attempted
-                List(history) { currentGrandTotal in
-                    // Use a helper view to display each prior result
-                    HistoryView(history: currentGrandTotal)
-                    
-                    
+                
+//                // Show results of prior questions attempted
+//                List(history) { currentGrandTotal in
+//                    // Use a helper view to display each prior result
+//                    HistoryView(history: currentGrandTotal)
                 }
                 
-            }
-            
             .navigationTitle("Split the Bill!")
             
             Spacer()
+            
+            }
             
         }
         
     }
     
-}
+
 
 struct SplitBillView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            SplitBillView()
+            LiveSplitBillView()
         }
     }
+    
+    struct LiveSplitBillView: View {
+        @State var historybills: [GrandTotal] = testGrandTotal
+        
+        var body: some View{
+            SplitBillView(history: $historybills)
+        }
+        
+    }
+        
 }

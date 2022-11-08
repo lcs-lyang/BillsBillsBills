@@ -9,17 +9,21 @@ import SwiftUI
 
 @main
 struct BillsBillsBillsApp: App {
+    
+    @State private var history: [GrandTotal] = []
+    
+    
     var body: some Scene {
         WindowGroup {
             
             TabView{
             
-            SplitBillView()
+                SplitBillView(history: $history)
                     .tabItem {
                         Image(systemName: "square.fill.and.line.vertical.and.square.fill")
                     }
                 
-            ListHistoryView()
+                ListHistoryView(history: $history)
                     .tabItem {
                         Image(systemName: "list.bullet.rectangle.portrait.fill")
                     }
