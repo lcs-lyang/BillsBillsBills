@@ -9,14 +9,14 @@ import SwiftUI
 
 struct HistoryView: View {
     
-    var totalInput: String
-    var numberOfPeople: String
-    var grandTotal: Double
+     var totalInput: String
+     var numberOfPeople: String
+     var grandTotal: Double
     
     var body: some View {
         ScrollView{
             VStack{
-                Text("Your personal total is: $\(totalInput)")
+                Text("Your total is: $\(totalInput)")
                 Text("The bill was split between \(numberOfPeople)")
                 Text("The total per person is: $\(String(format: "%.2f", grandTotal))")
             }
@@ -27,7 +27,7 @@ struct HistoryView: View {
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
 
-        HistoryView(totalInput: "10", numberOfPeople: "2", grandTotal: 400.0)
+        HistoryView(totalInput: "10", numberOfPeople: "10", grandTotal: 300)
         }
     }
 

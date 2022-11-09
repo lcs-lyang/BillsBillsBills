@@ -32,10 +32,10 @@ struct ListHistoryView: View {
     @State var taxCorrect: Bool = false
     
     @State var grandTotal = 0.0
-    
-    @State var filterTotal = ""
-    
+        
     @State var grandTotalInput = false
+    
+    @State var grandTotalWanted = ""
     
     @Binding var history: [GrandTotal]
     
@@ -46,53 +46,67 @@ struct ListHistoryView: View {
         NavigationView {
             
             VStack{
-               
-                HStack{
-                    TextField("",
-                              text: $filterTotal,
-                              prompt: Text("..."))
-                        .font(.title)
-                    
-                    Button(action: {
-                        filterTotal = ""
-                        grandTotalInput = false
-                        print("Resetting")
-                    }, label: {
-                        Text("Reset")
-                    })
-                    
-                }
-               
-                
-                
-                    List(filtered(by: grandTotal,
-                                  from: history,
-                                  input: grandTotalInput)) { totals in
-                        HistoryView(totalInput: "", numberOfPeople: "", grandTotal: totals.grandTotal)
+
+                    HStack{
+                        TextField("",
+                                  text: $grandTotalWanted,
+                                  prompt: Text("..."))
+                            .font(.title)
+                            .padding()
+                        
+                        
+                        Button(action: {
+                            
+                            guard let grandTotalGiven = Double(grandTotalWanted) else {
+                               
+                                grandTotalInput = false
+                                
+                                return
+                                
+                            }
+                            
+                            grandTotal = grandTotalGiven - 0
+                            
+                        }, label: {
+                            Text("Filter")
+                        })
+                        .padding()
+                        
                         
                     }
-                                  .padding()
-//                                  .onChange(of: filterTotal) { newValue in
-//
-//                                      //the user has selected a hue, so start filtering
-//                                      if newValue > 0 {
-//                                          grandTotalInput = true
-//                                      }
-//
-//                                      print("A selection has been made")
-//
-//                                  }
+                
+                List(filtered(by: grandTotal,
+                              from: history,
+                              input: grandTotalInput)) { totals in
+                    HistoryView(totalInput: totals.totalInput, numberOfPeople: totals.numberOfPeople, grandTotal: totals.grandTotal)
+                        .padding()
                     
+                    
+                    }
+                        
+                Button(action: {
+                    grandTotalWanted = ""
+                    grandTotalInput = false
+
+                    print("Resetting")
+                }, label: {
+                    Text("Reset")
+                })
+                .padding()
+                
+                    }
+                                  
+                                  .navigationTitle("History")
+                                  
+                                  Spacer()
                 }
-            .navigationTitle("History")
-            
-            Spacer()
+           
             }
             
             
         }
             
-        }
+        
         
     
     
