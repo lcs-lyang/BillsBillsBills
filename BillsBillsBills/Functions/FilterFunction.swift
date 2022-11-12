@@ -7,7 +7,7 @@
 
 import Foundation
 
-func filtered(by grandTotal: Double, from list: [GrandTotal], input: Bool) -> [GrandTotal] {
+func filtered(by grandTotal: String, from list: [GrandTotal], input: Bool) -> [GrandTotal] {
 
 
     //Not filtering when there is no input
@@ -18,15 +18,16 @@ func filtered(by grandTotal: Double, from list: [GrandTotal], input: Bool) -> [G
 
         print("Grand Total is: \(grandTotal)")
         print(list)
-
-        let totalRange = 0.0...10000000.0
+        
+//        let totalRange = 0.0...10000000.0
 
         var filteredTotals: [GrandTotal] = []
 
         for totals in list {
-
-            //Look for a total in the desired range
-            if totalRange.contains(totals.grandTotal) {
+            
+            //As we iterate through the list of totals, we are checkcing what the user is searching for, is added to the filtered totals, if it corresponds to the grandtotal condition (vv) 
+            if Double(grandTotal) == totals.grandTotal {
+//            if totalRange.contains(totals.grandTotal) {
                 filteredTotals.append(totals)
             }
 
@@ -39,3 +40,5 @@ func filtered(by grandTotal: Double, from list: [GrandTotal], input: Bool) -> [G
 
 
 }
+
+//The issue was that we saved the grand total values

@@ -18,7 +18,7 @@ struct HistoryView: View {
             VStack{
                 Text("Your total is: $\(totalInput)")
                 Text("The bill was split between \(numberOfPeople)")
-                Text("The total per person is: $\(String(format: "%.2f", grandTotal))")
+                Text("The total per person is: \(grandTotal.formatted(.number.precision(.fractionLength(2))))")
             }
         }
     }

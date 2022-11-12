@@ -11,28 +11,6 @@ struct ListHistoryView: View {
     
     //MARK: STORED PROPERTIES
     
-    //Types of input that the user is going to enter
-    @State var dateInput = Date()
-    
-    @State var totalInput = ""
-    
-    @State var numberOfPeople = ""
-    
-    @State var tipInput = ""
-    
-    //Not a string, but rather a value. However we don't know the value yet so set it to zero.
-    @State var taxInput = 0.0
-    
-    @State var totalCorrect: Bool = false
-    
-    @State var peopleCorrect: Bool = false
-    
-    @State var tipCorrect: Bool = false
-    
-    @State var taxCorrect: Bool = false
-    
-    @State var grandTotal = 0.0
-        
     @State var grandTotalInput = false
     
     @State var grandTotalWanted = ""
@@ -40,42 +18,32 @@ struct ListHistoryView: View {
     @Binding var history: [GrandTotal]
     
     //MARK: COMPUTED PROPERTIES
-    //using stored properties to calculate something
+    
+//    @State var grandTotal = 0.0
     
     var body: some View {
         NavigationView {
             
             VStack{
 
-                    HStack{
-                        TextField("",
-                                  text: $grandTotalWanted,
-                                  prompt: Text("..."))
-                            .font(.title)
-                            .padding()
+                HStack{
+                    TextField("",
+                              text: $grandTotalWanted,
+                              prompt: Text("..."))
+                    .font(.title)
+                    .padding()
+                       
+                    Button(action: {
+                       grandTotalInput = true
+                        print("Filtering")
+                    }, label: {
+                        Text("Filter")
+                    })
+                    
+                }
                         
-                        
-                        Button(action: {
-                            
-                            guard let grandTotalGiven = Double(grandTotalWanted) else {
-                               
-                                grandTotalInput = false
-                                
-                                return
-                                
-                            }
-                            
-                            grandTotal = grandTotalGiven - 0
-                            
-                        }, label: {
-                            Text("Filter")
-                        })
-                        .padding()
-                        
-                        
-                    }
                 
-                List(filtered(by: grandTotal,
+                List(filtered(by: grandTotalWanted,
                               from: history,
                               input: grandTotalInput)) { totals in
                     HistoryView(totalInput: totals.totalInput, numberOfPeople: totals.numberOfPeople, grandTotal: totals.grandTotal)

@@ -59,7 +59,7 @@ struct ButtonView: View {
 //            print("tipGiven is: \(tipGiven)")
 //            print("grandTotal is: \(grandTotal)")
             
-            grandTotal = ((totalGiven * taxInput)/2) + (totalGiven/peopleGiven) + ((totalGiven/peopleGiven)*(tipGiven/100))
+            grandTotal = ((totalGiven * taxInput + totalGiven) * (tipGiven/100)) / peopleGiven
             
             
             saveResult()
@@ -78,8 +78,12 @@ struct ButtonView: View {
     /// - Tag: mm_adding_to_list
     func saveResult() {
         
+        
+        
+        
+        
         // Create a result to save based on current question state
-        let newGrandTotal = GrandTotal(totalInput: totalInput, numberOfPeople: numberOfPeople, tipInput: tipInput, taxInput: taxInput, totalCorrect: totalCorrect, peopleCorrect: peopleCorrect, tipCorrect: tipCorrect, taxCorrect: taxCorrect, grandTotal: grandTotal)
+        let newGrandTotal = GrandTotal(totalInput: totalInput, numberOfPeople: numberOfPeople, tipInput: tipInput, taxInput: taxInput, totalCorrect: totalCorrect, peopleCorrect: peopleCorrect, tipCorrect: tipCorrect, taxCorrect: taxCorrect, grandTotal: round(grandTotal*100)/100.0)
         
         // Insert most recent result in the first position in list
         // This ensures newer results at top of list; older at bottom
